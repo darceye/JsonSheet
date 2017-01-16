@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script src='vue.js'></script>
+  </head>
+  <body>
+  <h1>NX</h1>
+  <div v-for="(i, sheet) in nxwb">
+    <div><h2>{{sheet.name}}</h2></div>
+    <div  style="display: flex; flex-flow: column nowrap;">
+      <div v-for="(ir, row) in sheet.data"  style="display: flex; flex-flow: row nowrap;">
+        <div v-for="(ic, val) in row" track-by="$index">{{val}} | </div>
+      </div>
+    </div>
+  </div>
+  <h1>XLSX</h1>
+    <div  v-for="(i, sheet) in jsheets">
+      <div><h2>{{sheet.name}}</h2></div>
+    <table>
+      <tr>
+        <th v-for="(key, val) in sheet.data[0]">{{key}}</th>
+      </tr>
+      <tr  v-for="(ir, row) in sheet.data">
+        <td v-for="(key, val) in row">{{val}}</td>
+      </tr>
+    </table>
+  </div>
+
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+  <script type="text/javascript" src="xls.js"></script>
+  <script type="text/javascript" src="ui.js"></script>
+</html>
